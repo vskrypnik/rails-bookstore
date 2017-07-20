@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Home', :js do
-  describe 'Header' do
-    describe 'Bookstore' do
+RSpec.feature 'Home', :js do
+  feature 'Header' do
+    feature 'Bookstore' do
       scenario 'Redirects to home page'
     end
 
-    describe 'Home' do
+    feature 'Home' do
       scenario 'Redirects to home page'
     end
 
-    describe 'Shop' do
+    feature 'Shop' do
       scenario 'Redirects to shop page'
     end
 
-    describe 'My account' do
+    feature 'My account' do
       context 'Signed in user' do
         scenario 'Redirects to account'
       end
@@ -24,10 +24,10 @@ RSpec.describe 'Home', :js do
       end
     end
 
-    describe 'Cart' do
+    feature 'Cart' do
       scenario 'Redirects to cart page'
 
-      describe 'Items number' do
+      feature 'Items number' do
         context 'Empty cart' do
           scenario 'Shows empty cart icon'
         end
@@ -39,37 +39,49 @@ RSpec.describe 'Home', :js do
     end
   end
 
-  describe 'Body' do
-    describe 'Carousel' do
-      describe 'Books' do
-        scenario 'Shows 3 newest books'
+  feature 'Body' do
+    feature 'Carousel' do
+      scenario 'Slides' do
+        books = create_list(:book, 4)
+
+        visit '/'
+
+        find('li[data-slide-to="0"]').click
+
+        books[1..4].reverse.cycle(2).each do |book|
+          expect(page).to have_content(book.name)
+          expect(page).to have_content(book.description)
+
+          # TODO: check info about authors
+          # TODO: check book cover image
+
+          sleep(1)
+
+          find('.icon-next').click
+        end
       end
 
-      describe 'Slides' do
-        scenario 'Can flip the slide'
-
-        describe 'Buy Now' do
-          scenario 'Shows notification'
-          scenario 'Increments cart items number'
-        end
+      feature 'Buy Now' do
+        scenario 'Shows notification'
+        scenario 'Increments cart items number'
       end
     end
 
-    describe 'Greeting' do
-      describe 'Get Started' do
+    feature 'Greeting' do
+      feature 'Get Started' do
         scenario 'Redirects to shop page'
       end
     end
 
-    describe 'Best Sellers' do
+    feature 'Best Sellers' do
       scenario 'Shows 4 most popular books'
 
       context 'Available book' do
-        describe 'Details button' do
+        feature 'Details button' do
           scenario 'Redirects to page with book info'
         end
 
-        describe 'Add to cart button' do
+        feature 'Add to cart button' do
           scenario 'Shows notification'
           scenario 'Increments cart items number'
         end
@@ -77,20 +89,20 @@ RSpec.describe 'Home', :js do
     end
   end
 
-  describe 'Footer' do
-    describe 'Home' do
+  feature 'Footer' do
+    feature 'Home' do
       scenario 'Redirects to home page'
     end
 
-    describe 'Shop' do
+    feature 'Shop' do
       scenario 'Redirects to shop page'
     end
 
-    describe 'Orders' do
+    feature 'Orders' do
       scenario 'Redirects to orders page'
     end
 
-    describe 'Settings' do
+    feature 'Settings' do
       scenario 'Redirects to settings page'
     end
   end
