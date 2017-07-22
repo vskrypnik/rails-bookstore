@@ -26,7 +26,7 @@ group :development, :test do
   gem 'faker', '~> 1.8', '>= 1.8.4'
   gem 'rspec-rails', '~> 3.6'
   gem 'selenium-webdriver', '~> 2.53'
-  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
+  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers', branch: 'rails-5'
   gem 'spring-commands-rspec', '~> 1.0', '>= 1.0.4'
 end
 

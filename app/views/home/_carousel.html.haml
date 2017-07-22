@@ -16,7 +16,7 @@
             .mb-60
               %h1= book.name
               %p.lead= book.description
-              %p.lead.small Vitaly Friedman, Daniel Mall,Vitaly Friedman
+              %p.lead.small= book.authors.map(&:full_name).to_sentence
               .general-align
                 %button.btn.btn-primary Buy Now
 

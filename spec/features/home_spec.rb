@@ -42,7 +42,7 @@ RSpec.feature 'Home', :js do
   feature 'Body' do
     feature 'Carousel' do
       scenario 'Slides' do
-        books = create_list(:book, 4)
+        books = create_list(:book_with_authors, 4)
 
         visit '/'
 
@@ -52,7 +52,10 @@ RSpec.feature 'Home', :js do
           expect(page).to have_content(book.name)
           expect(page).to have_content(book.description)
 
-          # TODO: check info about authors
+          expect(page).to have_content(
+            book.authors.map(&:full_name).to_sentence
+          )
+
           # TODO: check book cover image
 
           sleep(1)
