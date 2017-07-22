@@ -46,21 +46,23 @@ RSpec.feature 'Home', :js do
 
         visit '/'
 
-        find('li[data-slide-to="0"]').click
+        within '.carousel' do
+          find('li[data-slide-to="0"]').click
 
-        books[1..4].reverse.cycle(2).each do |book|
-          expect(page).to have_content(book.name)
-          expect(page).to have_content(book.description)
+          books[1..4].reverse.cycle(2).each do |book|
+            expect(page).to have_content(book.name)
+            expect(page).to have_content(book.description)
 
-          expect(page).to have_content(
-            book.authors.map(&:full_name).to_sentence
-          )
+            expect(page).to have_content(
+              book.authors.map(&:full_name).to_sentence
+            )
 
-          # TODO: check book cover image
+            # TODO: check book cover image
 
-          sleep(1)
+            sleep(1)
 
-          find('.icon-next').click
+            find('.icon-next').click
+          end
         end
       end
 
@@ -77,7 +79,23 @@ RSpec.feature 'Home', :js do
     end
 
     feature 'Best Sellers' do
-      scenario 'Shows 4 most popular books'
+      scenario 'Shows 4 most popular books' do
+        bestsellers_books = Array.new(5) do |order_items_count|
+          create(:book_with_order_items, order_items_count: order_items_count)
+        end
+
+        visit '/'
+
+        within '#bestsellers' do
+          bestsellers_books[1..5].each do |book|
+            expect(page).to have_content(book.name)
+
+            expect(page).to have_content(
+              book.authors.map(&:full_name).to_sentence
+            )
+          end
+        end
+      end
 
       context 'Available book' do
         feature 'Details button' do
@@ -88,6 +106,10 @@ RSpec.feature 'Home', :js do
           scenario 'Shows notification'
           scenario 'Increments cart items number'
         end
+      end
+
+      context 'Unavailable book' do
+        scenario 'Has no action page on hover'
       end
     end
   end

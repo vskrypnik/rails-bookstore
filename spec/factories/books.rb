@@ -14,5 +14,15 @@ FactoryGirl.define do
         create_list(:author, evaluator.authors_count, books: [book])
       end
     end
+
+    factory :book_with_order_items do
+      transient do
+        order_items_count 3
+      end
+
+      after(:create) do |book, evaluator|
+        create_list(:order_item, evaluator.order_items_count, book: book)
+      end
+    end
   end
 end
