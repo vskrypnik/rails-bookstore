@@ -8,6 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'devise', '~> 4.3'
 gem 'haml-rails', '~> 1.0'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
@@ -25,7 +26,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.8'
   gem 'faker', '~> 1.8', '>= 1.8.4'
   gem 'rspec-rails', '~> 3.6'
-  gem 'selenium-webdriver', '~> 2.53'
+  gem 'selenium-webdriver', '~> 3.5', '>= 3.5.1'
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers', branch: 'rails-5'
   gem 'spring-commands-rspec', '~> 1.0', '>= 1.0.4'
 end

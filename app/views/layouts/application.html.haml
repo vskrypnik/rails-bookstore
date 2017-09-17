@@ -12,9 +12,12 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 
-  %body
+  %body.flex.flex-column
     = render 'shared/header'
-    = yield
+
+    .flex-grow.page-content
+      = yield
+
     = render 'shared/footer'
 
 %script{src: "https://use.fontawesome.com/67602d7308.js"}

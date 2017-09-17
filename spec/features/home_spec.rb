@@ -1,44 +1,6 @@
 # frozen_string_literal: true
 
 RSpec.feature 'Home', :js do
-  feature 'Header' do
-    feature 'Bookstore' do
-      scenario 'Redirects to home page'
-    end
-
-    feature 'Home' do
-      scenario 'Redirects to home page'
-    end
-
-    feature 'Shop' do
-      scenario 'Redirects to shop page'
-    end
-
-    feature 'My account' do
-      context 'Signed in user' do
-        scenario 'Redirects to account'
-      end
-
-      context 'Guest user' do
-        scenario 'Redirects to Login page'
-      end
-    end
-
-    feature 'Cart' do
-      scenario 'Redirects to cart page'
-
-      feature 'Items number' do
-        context 'Empty cart' do
-          scenario 'Shows empty cart icon'
-        end
-
-        context 'Not empty cart' do
-          scenario 'Shows cart icon with number of items'
-        end
-      end
-    end
-  end
-
   feature 'Body' do
     feature 'Carousel' do
       scenario 'Slides' do
@@ -111,24 +73,6 @@ RSpec.feature 'Home', :js do
       context 'Unavailable book' do
         scenario 'Has no action page on hover'
       end
-    end
-  end
-
-  feature 'Footer' do
-    feature 'Home' do
-      scenario 'Redirects to home page'
-    end
-
-    feature 'Shop' do
-      scenario 'Redirects to shop page'
-    end
-
-    feature 'Orders' do
-      scenario 'Redirects to orders page'
-    end
-
-    feature 'Settings' do
-      scenario 'Redirects to settings page'
     end
   end
 end

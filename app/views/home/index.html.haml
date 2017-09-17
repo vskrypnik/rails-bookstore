@@ -1,11 +1,15 @@
 %main.container
+  - if flash[:notice]
+    .alert.alert-info
+      = flash[:notice]
+
   = render 'carousel'
 
 .container
   .jumbotron.text-center.mb-0
-    %h2.h1 Welcome to our amazing Bookstore!
+    %h2.h1= t('.welcome_to_our_amazing_bookstore')
     .mb-res-50
-      %p We pore through hundreds of new books each month and select the five best we can find to share with our members.
-    %button.btn.btn-default Get Started
+      %p= t('.about_our_bookstore')
+    %button.btn.btn-default= t('.get_started')
 
   = render 'bestsellers'

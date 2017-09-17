@@ -1,0 +1,41 @@
+%main.container.general-main-wrap
+  .text-center
+    %h3.general-login-title= t '.signin'
+
+    %a.general-login-icon{href: '#'}
+      %i.fa.fa-facebook-official
+
+    %p.general-login-text= t '.or'
+
+  = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'general-form' }) do |f|
+    - if flash[:alert]
+      .alert.alert-danger
+        = flash[:alert]
+
+    .form-group.mb-30
+      = f.label :email, class: 'control-label input-label'
+      = f.email_field :email, autofocus: true, class: 'form-control', placeholder: true
+
+    .form-group.mb-30
+      = f.label :password, class: 'control-label input-label'
+      = f.password_field :password, class: 'form-control', placeholder: true
+
+      %a.help-block.in-gold-500{href: '#'}= t '.forgot_password'
+
+    - if devise_mapping.rememberable?
+      .form-group.checkbox.text-center.mb-30
+        %label.checkbox-label
+          = f.check_box :remember_me, class: 'checkbox-input', hidden: true
+
+          %span.checkbox-icon
+            %i.fa.fa-check
+
+          = f.label :remember_me, class: 'checkbox-text'
+
+    .text-center
+      %button.btn.btn-default.mb-20= t '.submit'
+
+  %p.general-sign-text.text-center
+    = t '.do_not_have_an_account'
+
+    = link_to t('.signup'), new_user_registration_path, class: 'in-gold-500'

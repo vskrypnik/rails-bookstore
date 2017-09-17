@@ -414,13 +414,14 @@
   $size: 24px;
   width: $size;
   height: $size;
-  font-size: 10px;
+  font-size: 11px;
   color: white;
   line-height: $size;
   text-align: center;
   display: inline-block;
   border: 1px solid $grey-350;
   margin-right: 15px;
+  padding-top: 6px;
 }
 .checkbox-input:checked + .checkbox-icon {
   background-color: $gold-500;
