@@ -16,3 +16,5 @@
 spec/examples.txt
 
 .byebug_history
+
+.env

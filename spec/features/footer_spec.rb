@@ -20,14 +20,26 @@ end
 
 RSpec.feature 'In footer', :js do
   context 'authorized user' do
-    scenario 'can click Settings link'
+    before do
+      user = create(:confirmed_user)
+      login_as(user, scope: :user)
+    end
+
+    scenario 'can click Settings link' do
+      visit '/'
+      expect(page).to have_content('Welcome to our amazing Bookstore!')
+
+      within('footer') { click_link('Settings') }
+      expect(page).to have_content('Settings')
+    end
+
     scenario 'can click Orders link'
 
     class_eval(&SHARED_FOOTER)
   end
 
   context 'guest' do
-    scenario 'can click Settings link', :skip do
+    scenario 'can click Settings link' do
       visit('/')
       expect(page).to have_content('Welcome to our amazing Bookstore!')
 

@@ -25,7 +25,7 @@ SHARED_HEADER = proc do
     expect(page).to have_content('Catalog')
   end
 
-  scenario 'can click Cart icon'
+  scenario 'can click cart icon'
 
   context 'with empty cart' do
     scenario 'can see empty cart icon'

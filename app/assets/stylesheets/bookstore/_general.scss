@@ -224,7 +224,6 @@ img {
   float: right;
 }
 
-
 @media (min-width: $grid-float-breakpoint) {
   .general-main-wrap {
     margin-bottom: 100px;
@@ -324,5 +323,14 @@ img {
     padding-right: 0;
     padding-left: 0;
     margin-bottom: 85px;
+  }
+}
+
+ul.errors {
+  margin-left: 0;
+  padding-left: 0;
+
+  li {
+    list-style-type: none;
   }
 }

@@ -9,9 +9,11 @@ end
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'devise', '~> 4.3'
+gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
 gem 'haml-rails', '~> 1.0'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'omniauth-facebook', '~> 4.0'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.2'
@@ -32,6 +34,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'letter_opener_web', '~> 1.3', '>= 1.3.1'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop', '~> 0.50.0'
   gem 'spring'

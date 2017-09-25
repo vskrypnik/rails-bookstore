@@ -7,8 +7,9 @@
           %li= link_to t('.shop'), shop_path, class: 'nav-link'
           %li
             %a.nav-link{href: "/orders"}= t('.orders')
-          %li
-            %a.nav-link{href: "/settings"}= t('.settings')
+
+          %li= link_to t('.settings'), edit_user_registration_path, class: 'nav-link'
+            
       .col-sm-3
         %p.general-nav-mail amazing@bookstore.com
         %p.general-nav-number (999)-999-9999

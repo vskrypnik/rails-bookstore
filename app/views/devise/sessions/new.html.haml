@@ -2,7 +2,7 @@
   .text-center
     %h3.general-login-title= t '.signin'
 
-    %a.general-login-icon{href: '#'}
+    %a.general-login-icon{href: user_facebook_omniauth_authorize_path}
       %i.fa.fa-facebook-official
 
     %p.general-login-text= t '.or'
@@ -20,7 +20,8 @@
       = f.label :password, class: 'control-label input-label'
       = f.password_field :password, class: 'form-control', placeholder: true
 
-      %a.help-block.in-gold-500{href: '#'}= t '.forgot_password'
+      %a.help-block
+        =link_to t('.forgot_password'), new_user_password_path, class: 'in-gold-500'
 
     - if devise_mapping.rememberable?
       .form-group.checkbox.text-center.mb-30
